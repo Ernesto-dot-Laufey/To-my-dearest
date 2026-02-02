@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css"/>
+    <title>For my soulmate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+    
+    <div id="envelope-container">
+        <img src="pompompurin-peek.gif" class="peeking-pompom" alt="Peeking">
+        <img src="envelope.png" alt="Envelope" id="envelope">
+        <p>♡ To my dearest, Dani ♡</p>
+    </div>
+
+    <div id="letter-container">
+        <div class="letter-window">
+            <h1 id="letter-title">Will you be my valentine?</h1>
+
+            <img src="pinkie-pie-flower.gif" class="flower" id="letter-pinkiepie" />
+
+            <div class="buttons" id="letter-buttons">
+                <img src="yes.png" class="btn yes-btn" alt="Yes" />
+                <div class="no-wrapper">
+                    <img src="no.png" class="btn no-btn" alt="No" />
+                </div>
+            </div>
+
+            <button id="read-me-btn" class="read-me-btn" style="display: none">
+                READ ME ♡
+            </button>
+        </div>
+    </div> 
+
+    <div id="full-letter" class="full-letter" style="display: none">
+        <div class="paper">
+            
+            <div id="letter-page-1" class="letter-content">
+                <p class="greeting">To my dearest, Dani</p>
+                <p>
+                    Loving you feels like the most natural thing I have ever done. It’s as if the cosmos itself conspired to bring us together.
+                </p>
+                <p>
+                    And with this, I give you my favorite line from one of my favorite books: "You have bewitched me, body and soul, and I love, I love, I love you. I never wish to be parted from you from this day on."
+                </p>
+                
+                <button class="nav-btn" onclick="showPage2()">Next Page ♡</button>
+            </div>
+            <div id="letter-page-2" class="letter-content" style="display: none">
+                <p>
+                    I place my heart in your hands, not as a gift, but as a returning——for it has always belonged to you.
+                </p>
+                <p>
+                    I am yours, completely and fully. I will always give all of me to you.
+                </p>
+                <p class="signature">- Yours eternally, <br> 
+                <span class="my-name">Nesto ♡</span></p>
+
+                <div class="nav-row">
+                    <button class="nav-btn" onclick="showPage1()">Previous Page ♡</button>
+                    <button class="nav-btn" onclick="showPage3()">Next Page ♡</button>
+
+                    </div> </div>     <div id="letter-page-3" class="letter-content" style="display: none">
+                        <p style="margin-bottom: 15px; font-weight: bold; color: #f07612;">PS: Here are pictures of my cats :D</p>
+
+                        <div class="polaroid-gallery">
+
+                        <div class="polaroid">
+                            <img src="cat1.png" alt="Cat 1">
+                        </div>
+
+                        <div class="polaroid">
+                            <img src="cat2.png" alt="Cat 2">
+                        </div>
+
+                        <div class="polaroid">
+                            <img src="cat3.png" alt="Cat 3">
+                        </div>
+
+                        <div class="polaroid">  
+                            <img src="stupid-cat.png" alt="Cat 4">
+                        </div>
+                        
+                        <div class="nav-row">
+                            <button class="nav-btn" onclick="showPage2()">Previous Page ♡</button>
+                            <button class="nav-btn" onclick="showPage4()">One Last Gift ➔</button>
+                        </div>
+                    </div>
+
+            </div> <div id="letter-page-4" class="letter-content" style="display: none">
+                
+                <div class="wish-coupon">
+                    <div class="coupon-header">
+                        ✨ OFFICIAL COUPON ✨
+                    </div>
+                    
+                    <div class="coupon-body">
+                        <p>This coupon entitles <b>Dani</b> to:</p>
+                        <h2>THREE (3) WISHES</h2>
+                        <p><i>Anything you want, I'll make it happen. <br> (if i can!)</i></p>
+                    </div>
+
+                    <div class="coupon-footer">
+                        <p>Signed: <b>Nesto ♡</b></p>
+                        <p style="font-size: 10px; margin-top: 5px;">*Valid Forever &bull; No Expiration Date <br> screenshot this as proof !</p>
+                    </div>
+                </div>
+                
+                    <div class="nav-row">
+                        <button class="nav-btn" onclick="showPage3()">Previous Page ♡</button>
+                        <button class="nav-btn" onclick="showPage5()">Proof ♡</button>
+                        </div>
+                    </div> <div id="letter-page-5" class="letter-content" style="display: none">
+        
+                    <p class="greeting" style="font-size: 18px; margin-bottom: 20px;">Measuring my certainty...</p>
+
+                    <div class="meter-container">
+                        <div class="meter-label">
+                        
+                            <span>CERTAINTY</span>
+                        </div>
+                        
+                        <div class="meter-bar">
+                            <div class="meter-fill"></div>
+                        </div>
+
+                        <p class="meter-text">STATUS: <span class="status-value">CALCULATING...</span></p>
+                    </div>
+
+                    <p class="final-message">It's off the charts, coz I'm ∞% certain about you. ♡</p>
+
+                    <div class="nav-row">
+                    <button class="nav-btn" onclick="showPage4()">Previous Page ♡</button>
+                    <button onclick="closeWithExplosion()" class="close-btn">I love you! (Close)</button>
+            </div>
+
+    </div> </div> </div> <script src="script.js" defer></script>
+</body>
+</html>

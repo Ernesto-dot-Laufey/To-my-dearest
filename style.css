@@ -1,0 +1,551 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("heart-bg.jpg"); 
+    background-size: cover; 
+    background-position: center;
+    font-family: "Pixelify Sans", sans-serif;
+    overflow: hidden; 
+}
+
+.peeking-pompom {
+    width: 200px;
+    display: block;        
+    margin: 0 auto;     
+    left: 4%;
+
+    margin-bottom: -20px;
+    position: relative;    
+    z-index: 1;            
+
+}
+
+@keyframes peek {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+#envelope-container {
+    text-align: center;
+    cursor: pointer;
+}
+
+#envelope-container p {
+    font-size: 30px; 
+    color: #d63384;
+    margin-top: 20px;
+}
+
+#envelope {
+    width: 200px;
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+#letter-container {
+    display: none;
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.letter-window {
+    width: 90vw; 
+    max-width: 800px;
+    aspect-ratio: 3/2; 
+    
+    background-image: url("window.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    padding-top: 140px; 
+    
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.letter-window.open {
+    transform: scale(1);
+    opacity: 1;
+}
+
+
+h1 {
+    font-size: 50px; 
+    margin: 0;
+    line-height: 1.2;
+    margin-top: 30px;
+    
+    
+    transition: all 0.5s ease; 
+}
+
+
+.letter-window.final h1 {
+    font-size: 30px;
+    margin-top: 80px;
+}
+
+
+.pinkie-pie {
+    width: 200px; 
+    height: auto;
+    margin-top: -20px;
+    margin-bottom: 0;
+    
+    
+    transition: all 0.5s ease; 
+}
+
+.letter-window.final .pinkie-pie {
+    width: 100px;
+    margin-top: 10px;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    margin-top: -10px;
+}
+
+.btn {
+    width: 120px; 
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.yes-btn { z-index: 2; }
+.no-btn { z-index: 1; }
+
+/* Read Me Button */
+.read-me-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 20px;
+    background-color: #ffb6c1; 
+    border: 3px solid #ff69b4; 
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.2s;
+    margin-top: 20px;
+}
+
+/* Full Letter Overlay */
+
+.greeting {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #f34fa1;
+    font-weight: bold;
+}
+.full-letter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.paper {
+    width: 85%;
+    max-width: 500px;
+    background-color: #fff0f5;
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px dashed #ff69b4;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    animation: openPaper 0.5s forwards ease;
+}
+
+@keyframes openPaper {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.signature {
+    font-size: 15px;
+    margin-top: 20px;
+    text-align: right;
+    margin-right: 20px;
+    line-height: 1.5;
+    font-weight: bold;
+    color: #E5B7B8;
+}   
+
+.my-name {
+    font-family : "Pixelify Sans", sans-serif;
+    font-size: 20px;
+    color: #db0808;
+}
+
+.close-btn {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: #dd2ec0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 18px;
+}
+
+/* --- NEW LETTER STYLES --- */
+.nav-btn {
+    background: none;
+    border: none;
+    color: #d63384; 
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 15px;
+    text-decoration: underline;
+}
+
+.nav-btn:hover {
+    color: #ff69b4;
+}
+
+.nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.letter-content {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.falling-img {
+    position: fixed;
+    top: -10vh;           
+    z-index: 999;         
+    pointer-events: none; 
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg); 
+    }
+}   
+
+.polaroid-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.polaroid {
+    background: white;
+    padding: 8px 8px 25px 8px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 40%; 
+    transform: rotate(-2deg);
+    transition: transform 0.3s;
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(3deg);
+}
+
+.polaroid img {
+    width: 100%;
+    display: block;
+    border-radius: 2px;
+}
+
+
+.polaroid:nth-child(even) {
+    transform: rotate(3deg);
+}
+
+.polaroid img {
+    width: 100%;
+    display: block;
+}
+
+.wish-coupon {
+    background-color: #fff;
+    border: 3px dashed #ff69b4; 
+    border-radius: 15px;
+    padding: 20px;
+    margin: 30px auto 20px auto; 
+    width: 80%;
+    color: #d63384;
+    transform: rotate(-1deg);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.wish-coupon:hover {
+    transform: scale(1.05) rotate(0deg); 
+}
+
+.coupon-header {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 2px solid #ffb6c1;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.coupon-body h2 {
+    font-size: 28px;
+    margin: 10px 0;
+    color: #ff1493; 
+    text-transform: uppercase;
+}
+
+.coupon-footer {
+    margin-top: 15px;
+    border-top: 2px solid #ffb6c1;
+    padding-top: 10px;
+    font-size: 15px;
+    color: #8A0303 ;
+}
+
+/* --- PAGE 5: HEART METER --- */
+.meter-container {
+    width: 90%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.meter-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: bold;
+    color: #d63384;
+    margin-bottom: 5px;
+}
+
+.meter-bar {
+    width: 100%;
+    height: 30px;
+    background: #fff;
+    border: 3px solid #ffb6c1;
+    border-radius: 15px;
+    overflow: visible; 
+    position: relative;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.meter-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff9a9e 0%, #ff69b4 100%);
+    border-radius: 12px;
+    position: relative;
+    
+    
+    animation: fillBreak 3s forwards ease-in-out;
+}
+
+
+.meter-fill::after {
+    content: "❤️";
+    position: absolute;
+    right: -10px;
+    top: -5px;
+    font-size: 24px;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+}
+
+.meter-text {
+    margin-top: 15px;
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    color: #555;
+}
+
+.status-value {
+    font-weight: bold;
+    color: #ff69b4;
+    animation: textGlitch 3s forwards;
+}
+
+.final-message {
+    opacity: 0;
+    margin-top: 20px;
+    color: #d63384;
+    font-weight: bold;
+    font-size: 18px;
+    animation: fadeInMsg 0.5s forwards;
+    animation-delay: 3s; 
+}
+
+
+
+@keyframes fillBreak {
+    0% { width: 0%; }
+    50% { width: 80%; }  
+    70% { width: 100%; }
+    80% { width: 100%; transform: scale(1); } 
+    90% { transform: skewX(-10deg) scale(1.1); } 
+    100% { 
+        width: 130%; 
+        box-shadow: 0 0 20px #ff1493; 
+        transform: scale(1.05);
+    }
+}
+
+@keyframes textGlitch {
+    0% { content: "CALCULATING..."; color: #ff69b4; }
+    70% { content: "100%"; color: #ff69b4; }
+    80% { content: "WARNING!"; color: red; }
+    100% { color: #ff0055; text-shadow: 2px 0 red; }
+}
+
+@keyframes fadeInMsg {
+    to { opacity: 1; transform: translateY(-5px); }
+}
+
+.explosion-heart {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    font-size: 30px;
+    pointer-events: none; 
+    z-index: 9999;
+    
+   
+    animation: explode 1.5s forwards ease-out;
+}
+
+@keyframes explode {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+       
+        transform: translate(var(--x), var(--y)) scale(0.5) rotate(var(--r));
+    }
+}
+
+/* --- MOBILE SECTION --- */
+@media (max-width: 600px) {
+
+    .peeking-pompom {
+        width: 250px;        
+        top: 4px; 
+        left: 8%;
+    }
+
+
+    #envelope-container p {
+        font-size: 25px; 
+    }
+    
+    .letter-window {
+        width: 95vw;          
+        padding-top: 95px;   
+        
+        background-size: 100% 100%; 
+        aspect-ratio: 3/2.2; 
+    }
+
+    /* SCREEN 1: QUESTION */
+    h1 {
+        font-size: 22px;      
+        padding: 0 5px;
+        margin-top: 40px; 
+        color: #eb475d
+    }
+
+    #letter-pinkiepie {
+        width: 135px;         
+        margin-top: -35px;    
+        transform: scaleX(-1);
+    }
+
+    .btn {
+        width: 70px; 
+    }
+    
+    .buttons {
+        gap: 10px;            
+        margin-top: -5px; 
+    }
+
+    
+    .letter-window.final h1 {
+        font-size: 17px;      
+        margin-top: 30px;      
+        line-height: 1.3;
+        padding: 0 10px;     
+        color: #ca0568
+    }
+
+    .letter-window.final #letter-pinkiepie{
+        width: 130px; 
+        margin-top: 20px;
+    }
+
+    .read-me-btn {
+        font-size: 15px;      
+        padding: 5px 10px;    
+        margin-top: -15px;      
+    }
+
+    .paper {
+        width: 85%;
+        padding: 15px;        
+        font-size: 17px;      
+    }
+
+    .wish-coupon {
+        width: 85%;
+        padding: 15px;
+    }
+    .coupon-body h2 {
+        font-size: 22px;
+    }
+    
+    .close-btn {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+}
